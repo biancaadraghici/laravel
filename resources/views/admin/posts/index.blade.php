@@ -3,10 +3,10 @@
 
 @section('content')
 
-    @if(Session::has('deleted_user'))
-        <p class="alert alert-danger">{{session('deleted_user')}}</p>
-    @elseif(Session::has('updated_user'))
-        <p class="alert alert-success">{{session('updated_user')}}</p>
+    @if(Session::has('deleted_post'))
+        <p class="alert alert-danger">{{session('deleted_post')}}</p>
+    @elseif(Session::has('updated_post'))
+        <p class="alert alert-success">{{session('updated_post')}}</p>
     @elseif(Session::has('created_post'))
         <p class="alert alert-success">{{session('created_post')}}</p>
     @endif
@@ -35,8 +35,8 @@
                         <td><img style="margin-left:auto; margin-right:auto;" class="img-responsive img-rounded" src="{{$post->photo ? $post->photo->name : 'http://placehold.it/50x50'}}"></td>
                         <td>{{$post->user->name}}</td>
                         <td>{{$post->category ? $post->category->category_name : 'Uncategorized'}}</td>
-                        <td>{{$post->title}}</td>
-                        <td>{{$post->body}}</td>
+                        <td><a href="{{route('admin-post-edit',$post->id)}}">{{$post->title}}</a></td>
+                        <td>{{str_limit($post->body,30)}}</td>
                         <td>{{$post->created_at->diffForHumans()}}</td>
                         <td>{{$post->updated_at->diffForHumans()}}</td>
                     </tr>

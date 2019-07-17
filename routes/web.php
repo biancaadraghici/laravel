@@ -50,8 +50,32 @@ Route::group(['prefix'=> 'admin'], function(){
 });
 
 
+Route::group(['prefix'=>'admin'], function(){
+    Route::group(['prefix'=>'posts'], function(){
+        Route::get('create',['as'=>'admin-post-create', 'uses'=> 'AdminPostsController@create']);
+        Route::post('create', ['as'=>'admin-post-save','uses'=>'AdminPostsController@store']);
+
+        Route::get('edit/{id}', ['as'=>'admin-post-edit', 'uses' => 'AdminPostsController@edit']);
+        Route::patch('{id}', ['as' => 'admin-post-update', 'uses'=>'AdminPostsController@update']);
+    });
+});
+
+Route::group(['prefix'=>'admin'], function(){
+    Route::group(['prefix'=>'categories'], function(){
+        Route::get('create',['as'=>'admin-category-create', 'uses'=> 'AdminCategoriesController@create']);
+        Route::post('create', ['as'=>'admin-category-save','uses'=>'AdminCategoriesController@store']);
+
+        Route::get('edit/{id}', ['as'=>'admin-category-edit', 'uses' => 'AdminCategoriesController@edit']);
+        Route::patch('{id}', ['as' => 'admin-category-update', 'uses'=>'AdminCategoriesController@update']);
+    });
+});
+
+
+
+
 //middleware
 Route::group(['middleware'=>'admin'], function(){
     Route::resource('admin/users', 'AdminUsersController');
     Route::resource('admin/posts', 'AdminPostsController');
+    Route::resource('admin/categories', 'AdminCategoriesController');
 });
