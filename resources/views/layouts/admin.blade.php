@@ -25,7 +25,7 @@
     <![endif]-->
 
 
-
+        @yield('styles')
 
 </head>
 
@@ -145,6 +145,9 @@
                             <li>
                                 <a href="{{url('admin/posts/create')}}">Create Post</a>
                             </li>
+                             <li>
+                                <a href="{{url('admin/comments')}}">All Comments</a>
+                            </li>
 
                         </ul>
                         <!-- /.nav-second-level -->
@@ -159,7 +162,7 @@
                             </li>
 
                             <li>
-                                <a href="{{url('admin/categories/create')}}">Create Category</a>
+                                <a href="{{url('admin/categories')}}">Create Category</a>
                             </li>
 
                         </ul>
@@ -171,11 +174,11 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i>Media<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/media">All Media</a>
+                                <a href="{{url('admin/media')}}">All Media</a>
                             </li>
 
                             <li>
-                                <a href="">Upload Media</a>
+                                <a href="{{url('admin/media/create')}}">Upload Media</a>
                             </li>
 
                         </ul>
@@ -184,8 +187,7 @@
 
 
 
-
-
+                  
 
 
                     <li>
@@ -350,7 +352,7 @@
 <!-- jQuery -->
 <script src="{{asset('js/libs.js')}}"></script>
 
-
+@yield('scripts')
 @yield('footer')
 
 

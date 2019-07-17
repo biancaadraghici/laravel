@@ -13,7 +13,7 @@ class Photo extends Model
         'name'
     ];
 
-   public function getFileAttribute($photo){
+   public function getNameAttribute($photo){
        return $this-> uploads . $photo;
    }
 

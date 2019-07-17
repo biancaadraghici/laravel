@@ -26,7 +26,8 @@ Route::get('/admin', function(){
 
 });
 
-
+Route::get('post/{id}', ['as'=>'home.post','uses'=>'AdminPostsController@post']);
+ 
 
 
 
@@ -71,11 +72,35 @@ Route::group(['prefix'=>'admin'], function(){
 });
 
 
+Route::group(['prefix'=>'admin'], function(){
+    Route::group(['prefix'=>'media'], function(){
+
+        
+        Route::get('create',['as'=>'admin-media-create', 'uses'=> 'AdminMediasController@create']);
+        Route::post('create', ['as'=>'admin-media-save','uses'=>'AdminMediasController@store']);
+
+        Route::get('edit/{id}', ['as'=>'admin-media-edit', 'uses' => 'AdminMediasController@edit']);
+        Route::patch('{id}', ['as' => 'admin-media-update', 'uses'=>'AdminMediasController@update']);
+        
+    });
+});
+
+
+
+
 
 
 //middleware
 Route::group(['middleware'=>'admin'], function(){
     Route::resource('admin/users', 'AdminUsersController');
+
     Route::resource('admin/posts', 'AdminPostsController');
+
     Route::resource('admin/categories', 'AdminCategoriesController');
+
+    Route::resource('admin/media', 'AdminMediasController');
+    
+    Route::resource('admin/comments', 'PostCommentsController');
+
+    Route::resource('admin/comments/replies', 'CommentRepliesController');
 });
