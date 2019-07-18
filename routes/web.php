@@ -26,15 +26,16 @@ Route::get('/admin', function(){
 
 });
 
-Route::get('post/{id}', ['as'=>'home.post','uses'=>'AdminPostsController@post']);
- 
 
+Route::get('post/{id}', ['as'=>'admin.post','uses'=>'AdminPostsController@post']);
 
 
 
 
 
 Route::group(['prefix'=> 'admin'], function(){
+
+    
 
     Route::group(['prefix' => 'users'], function(){
         
@@ -59,6 +60,7 @@ Route::group(['prefix'=>'admin'], function(){
         Route::get('edit/{id}', ['as'=>'admin-post-edit', 'uses' => 'AdminPostsController@edit']);
         Route::patch('{id}', ['as' => 'admin-post-update', 'uses'=>'AdminPostsController@update']);
     });
+    
 });
 
 Route::group(['prefix'=>'admin'], function(){
@@ -85,7 +87,7 @@ Route::group(['prefix'=>'admin'], function(){
     });
 });
 
-
+Route::delete('/delete/media', 'AdminMediasController@deleteMedia');
 
 
 
@@ -103,4 +105,10 @@ Route::group(['middleware'=>'admin'], function(){
     Route::resource('admin/comments', 'PostCommentsController');
 
     Route::resource('admin/comments/replies', 'CommentRepliesController');
+    
+});
+//just for the users who are logged in
+Route::group(['middleware'=>'auth'], function(){
+
+    Route::post('comment/reply','CommentRepliesController@createReply');
 });

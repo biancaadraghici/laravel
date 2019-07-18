@@ -2,9 +2,21 @@
 
 @section('content')
     <h1>Media</h1>
+    <form action="/delete/media" method="post" class="form-inline">
+        {{csrf_field()}}
+        {{method_field('delete')}}
+        <div class="form-group">
+            <select name="checkBoxArray" id="" class="form-control">
+                <option value="delete">Delete</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary">
+        </div>
     <table class="table">
         <thead>
             <tr>
+                <th><input type="checkbox" name="options"></th>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Created At</th>
@@ -16,6 +28,7 @@
         <tbody>
             @foreach($photos as $photo)
             <tr>
+                <td><input class="checkBoxes" type="checkbox" name="checkBoxArray[]" value="{{$photo->id}}"></td>
                 <td>{{$photo->id}}</td>
                 <td>{{$photo->name}}</td>
                 <td>{{$photo->created_at->diffForHumans()}}</td>
@@ -32,7 +45,7 @@
             @endforeach
         </tbody>
     </table>
-
+    </form>
 
 
 @endsection

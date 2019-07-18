@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\User;
 use App\Photo;
+use App\Comment;
 use App\Category;
 use App\Http\Requests\PostsCreateRequest;
 use App\Http\Requests\PostsEditRequest;
@@ -21,7 +22,8 @@ class AdminPostsController extends Controller
      */
     public function index()
     {
-        $posts=Post::all();
+        
+        $posts=Post::paginate(7);
         return view('admin/posts/index', compact('posts'));
     }
 
@@ -134,10 +136,14 @@ class AdminPostsController extends Controller
     }
 
     public function post($id){
-
-
+        
+        
         $post=Post::findOrFail($id);
-        return view('post',compact('post'));
+        $comments=$post->comments()->whereIsActive(1)->get();
+        $categories=Category::all();
+        
+        
+        return view('post',compact('post','comments','categories'));
 
     }
 

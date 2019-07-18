@@ -2,7 +2,7 @@
 
 
 @section('content')
-    
+    @include('includes.tinyeditor')
     <div class="container">
             <h1 style="text-align:center;">Create Post</h1>
         {!! Form::open(['method'=>'POST', 'action'=>'AdminPostsController@store'])!!}

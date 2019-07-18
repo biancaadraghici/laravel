@@ -146,9 +146,9 @@
                                 <a href="{{url('admin/posts/create')}}">Create Post</a>
                             </li>
                              <li>
-                                <a href="{{url('admin/comments')}}">All Comments</a>
+                                <a href="{{url('admin/comments')}}">All Comments and Replies</a>
                             </li>
-
+                            
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>

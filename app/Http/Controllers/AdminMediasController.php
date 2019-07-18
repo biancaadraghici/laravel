@@ -35,4 +35,8 @@ class AdminMediasController extends Controller
         $photo->delete();
         return redirect('admin/media');
     }
+
+    public function deleteMedia(Request $request){
+        return "yey";
+    }
 }
