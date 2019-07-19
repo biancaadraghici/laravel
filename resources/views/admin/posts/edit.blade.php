@@ -2,6 +2,7 @@
 
 
 @section('content')
+@include('includes.tinyeditor')
 <div class="jumbotron">
         <h2 style="text-align:center;">Edit Post</h2>
 </div>

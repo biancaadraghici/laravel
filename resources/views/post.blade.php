@@ -27,7 +27,7 @@
     <hr>
 
     <!-- Post Content -->
-    <p class="lead"> {{$post->body}}</p>
+    <p class="lead"> {!!$post->body!!}</p>
 
     <hr>
     @if(Session::has('comment_message'))
@@ -125,20 +125,7 @@
     
 
 
-    @if(count($categories)>0)
-        <div class="well">
-            <h4>Blog Categories</h4>
-            <div class="row">
-                <div class="col-lg-6">
-                    <ul class="list-unstyled">
-                        @foreach ($categories as $category)
-                            <li><a href="#">{{$category->category_name}}</a></li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-        </div>
-    @endif 
+   
 @endsection
 
 @section('scripts')

@@ -25,6 +25,11 @@ Route::get('/admin', function(){
 
 });
 
+Route::get('/welcome',function(){
+    return view('welcome');
+});
+
+Route::get('/blog','BlogController@index');
 
 Route::get('post/{id}', ['as'=>'admin.post','uses'=>'AdminPostsController@post']);
 
