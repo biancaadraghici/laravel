@@ -34,7 +34,8 @@
 <div id="wrapper">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    @include('includes/admin_nav')
+    {{-- <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -70,7 +71,7 @@
             <!-- /.dropdown -->
 
 
-        </ul>
+        </ul> --}}
 
 
 
@@ -116,7 +117,7 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="/admin"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        <a href="{{url('admin')}}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
 
                     <li>
@@ -190,7 +191,7 @@
                   
 
 
-                    <li>
+                    {{-- <li>
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
@@ -273,7 +274,7 @@
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
-                    </li>
+                    </li> --}}
                 </ul>
 
 

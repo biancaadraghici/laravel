@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','HomeController@index');
+
 
 Auth::routes();
 
@@ -94,6 +93,9 @@ Route::delete('/delete/media', 'AdminMediasController@deleteMedia');
 
 //middleware
 Route::group(['middleware'=>'admin'], function(){
+
+    Route::get('/admin','AdminController@index');
+
     Route::resource('admin/users', 'AdminUsersController');
 
     Route::resource('admin/posts', 'AdminPostsController');
